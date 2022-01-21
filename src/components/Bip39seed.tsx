@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-import * as React from 'react';
 import * as bip39 from 'bip39';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -26,7 +24,7 @@ const useStyles = makeStyles(() => ({
 
 const Bip39seed = () => {
   const classes = useStyles();
-  const [Mnemonic, setMnemonic] = useState('');
+  const [Mnemonic, setMnemonic] = useState('test test test test test test test test test test test test test test test test test test test test test test test test');
   useEffect(() => {
     setMnemonic(bip39.generateMnemonic(256));
   }, []);

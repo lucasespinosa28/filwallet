@@ -1,26 +1,23 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/jsx-props-no-spreading */
 import {
   Button,
   Card,
   CardHeader,
-  Container,
   Grid,
   makeStyles,
   CardContent,
   TextField,
 } from '@material-ui/core';
-import { SHA256 } from 'crypto-js';
-import React, { useEffect, useState } from 'react';
+import sha256 from 'crypto-js/sha256';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-// import './App.global.css';
+
 import CreateWallet from './components/Bip39seed';
 import ImportWallet from './components/Importwallet';
 import Password from './components/Password';
 import Wallet from './components/wallets/filecoin';
-import Web3Storage from './components/web3storage';
-import SaveToken from './components/web3storage/saveToken';
+// import Web3Storage from './components/web3storage';
+// import SaveToken from './components/web3storage/saveToken';
 
 type Input = {
   password: string;
@@ -43,7 +40,7 @@ const Welcome = () => {
     if (localStorage.getItem('hash')) {
       setaccountExist(true);
       const hash = localStorage.getItem('hash');
-      if (hash === SHA256(watch('password')).toString()) {
+      if (hash === sha256(watch('password')).toString()) {
         setconfirm('primary');
       } else {
         setconfirm('secondary');
@@ -135,12 +132,12 @@ export default function App() {
             <Route path="/importwallet">
               <ImportWallet />
             </Route>
-            <Route path="/web3storage/savetoken">
+            {/* <Route path="/web3storage/savetoken">
               <SaveToken />
             </Route>
             <Route path="/web3storage">
               <Web3Storage />
-            </Route>
+            </Route> */}
             <Route path="/">
               <Welcome />
             </Route>

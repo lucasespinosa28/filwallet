@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import * as React from 'react';
 import * as bip39 from 'bip39';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -35,6 +33,7 @@ const Importwallet = () => {
 
   useEffect(() => {
     if (watch('seed')) {
+      console.log(watch('seed'))
       if (bip39.validateMnemonic(watch('seed').replace(/\n/g, ' '))) {
         setValid(true);
       }

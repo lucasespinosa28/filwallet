@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -13,6 +11,7 @@ import {
   TextField,
   Button,
 } from '@material-ui/core';
+import { ConfirmColors } from './ConfirmColors';
 
 type Inputs = {
   passwordOriginal: string;
@@ -27,10 +26,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-enum ConfirmColors {
-  primary = 'primary',
-  secondary = 'secondary',
-}
 const Password = () => {
   const classes = useStyles();
   const { register, watch } = useForm<Inputs>();
